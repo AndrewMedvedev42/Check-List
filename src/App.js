@@ -1,4 +1,4 @@
-import {createElement, React, useState} from "react"
+import {React} from "react"
 import {CheckListObject} from "./CheckListObject"
 
 function App() {
@@ -16,21 +16,21 @@ function App() {
         {CheckListObject.map((item)=>{
           const {phaseName, tasks} = item
           return (
-            <section>
+            <section key={phaseName}>
               <h1>{phaseName}</h1>
               <label>
                 {tasks.map((item)=>{
-                  return (<div>
-                            <input type="checkbox"/><span>{item.taskName}</span>
-                          </div> )
+                    localStorage.setItem(item.idKey , JSON.stringify({checkStatus:item.isChecked, phaseName:phaseName}));
+                    console.log(localStorage.getItem(item.idKey))
+                  return (
+                    <div>
+                      <input type="checkbox"  checked={item.isChecked}/><span>{item.taskName}</span>
+                    </div>)
                 })}
               </label>
             </section>
           )
         })}
-        {/* <label>
-        <input type="checkbox" checked={checked} onChange={handleChange}/>My Value
-        </label> */}
       </div>
     </section>
   );
