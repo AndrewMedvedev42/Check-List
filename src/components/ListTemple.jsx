@@ -6,11 +6,11 @@ export const ListTemple = ({data}) => {
         const input = document.getElementById(`${e}`)
         if(CheckBoxStatus.checkStatus){
           localStorage.setItem(e, JSON.stringify({checkStatus:false}))
-          input.setAttribute("checked", !CheckBoxStatus.checkStatus)
+          input.setAttribute("defaultChecked", !CheckBoxStatus.checkStatus)
           console.log(input);
         }else{
           localStorage.setItem(e, JSON.stringify({checkStatus:true}))
-          input.setAttribute("checked", !CheckBoxStatus.checkStatus)
+          input.setAttribute("defaultChecked", !CheckBoxStatus.checkStatus)
           console.log(input);
         }
     }
@@ -30,7 +30,7 @@ export const ListTemple = ({data}) => {
                         let CheckBoxStatus = JSON.parse(localStorage.getItem(id))
                         return (
                                 <div>
-                                    <input id={id} key={id} checked={CheckBoxStatus.checkStatus} type="checkbox" onChange={()=>{handleChange(item.id)}}/><span>{taskName}</span>
+                                    <input id={id} key={id} defaultChecked={CheckBoxStatus.checkStatus} type="checkbox" onChange={()=>{handleChange(item.id)}}/><span>{taskName}</span>
                                 </div>)
                     })
                 }
