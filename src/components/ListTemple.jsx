@@ -3,10 +3,15 @@ export const ListTemple = ({data}) => {
 
     const handleChange = (e) => {
         let CheckBoxStatus = JSON.parse(localStorage.getItem(e))
+        const input = document.getElementById(`${e}`)
         if(CheckBoxStatus.checkStatus){
           localStorage.setItem(e, JSON.stringify({checkStatus:false}))
+          input.setAttribute("checked", !CheckBoxStatus.checkStatus)
+          console.log(input);
         }else{
           localStorage.setItem(e, JSON.stringify({checkStatus:true}))
+          input.setAttribute("checked", !CheckBoxStatus.checkStatus)
+          console.log(input);
         }
     }
 
@@ -17,14 +22,15 @@ export const ListTemple = ({data}) => {
                 {
                     list.tasks.map((item)=>{
                         const {id, taskName} = item
-                        if (localStorage.length === 6) {
-                            console.log("storage is full");
+                        if (localStorage.length === 8) {
+                            console.log("Full :(");
                           }else{
                             localStorage.setItem(id , JSON.stringify({checkStatus:false}));
                         }
+                        let CheckBoxStatus = JSON.parse(localStorage.getItem(id))
                         return (
                                 <div>
-                                    <input key={id} type="checkbox" onChange={()=>{handleChange(item.id)}}/><span>{taskName}</span>
+                                    <input id={id} key={id} checked={CheckBoxStatus.checkStatus} type="checkbox" onChange={()=>{handleChange(item.id)}}/><span>{taskName}</span>
                                 </div>)
                     })
                 }

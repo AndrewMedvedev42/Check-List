@@ -9,7 +9,9 @@ export const PhaseTwoList = [
     {phaseName:"Phase №2", 
         tasks:[
             {id:"Ph-2,T-1",taskName:"task", isChecked:false},
-            {id:"Ph-2,T-2", taskName:"task", isChecked:false}]
+            {id:"Ph-2,T-2", taskName:"task", isChecked:false},
+            {id:"Ph-2,T-3",taskName:"task", isChecked:false},
+            {id:"Ph-2,T-4",taskName:"task", isChecked:false},]
         }]
 
 export const PhaseThreeList = [
