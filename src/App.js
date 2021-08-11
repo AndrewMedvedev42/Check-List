@@ -2,7 +2,8 @@ import {React} from "react"
 import {PhaseOneList, PhaseTwoList, PhaseThreeList} from "./CheckListObject"
 import {ListTemple} from "./components/ListTemple"
 
-function App() {
+function App(){
+
   return (
     <div className="App">
       <h1>My startup progress</h1>
