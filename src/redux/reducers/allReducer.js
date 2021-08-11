@@ -1,8 +1,9 @@
 import {combineReducers} from "redux"
-import someReducer from "./someReducer"
+import PhaseReducer from "./Phase-Reducer"
+
 
 const rootReducers = combineReducers({
-    one: someReducer,
+    PhaseReducer: PhaseReducer,
 })
 
 export default rootReducers

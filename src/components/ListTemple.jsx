@@ -1,9 +1,13 @@
-import { useEffect } from "react";
-import { useState } from "react";
+//REACT
+import {useEffect, useState} from "react";
+//REDUX
+import {useDispatch} from "react-redux"
+import {loadPhase1Stats,loadPhase2Stats,loadPhase3Stats} from "../redux/actions/phaseActions"
 
 export const ListTemple = ({data}) => {
     const [list] = data
     const [phaseObj, setPhaseObj] = useState({})
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         let CheckBoxStatus = JSON.parse(localStorage.getItem(phaseObj.phaseName))
@@ -15,16 +19,18 @@ export const ListTemple = ({data}) => {
                     for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = true;
+                            CheckBoxStatus.statusOfAll[i] = true
                             break;
                         }
                     }
                     localStorage.setItem(phaseObj.phaseName, JSON.stringify(CheckBoxStatus))
                     input.setAttribute("defaultChecked", true)
-                    
+
                 }else{
                     for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = false;
+                            CheckBoxStatus.statusOfAll[i] = false
                             break;
                         }
                     }
@@ -33,20 +39,10 @@ export const ListTemple = ({data}) => {
                 }
             }
         })
-        // const input = document.getElementById(`${e}`)
-        // if(CheckBoxStatus.checkStatus){
-        //   localStorage.setItem(e, JSON.stringify({checkStatus:false}))
-        //   input.setAttribute("defaultChecked", !CheckBoxStatus.checkStatus)
-        //   console.log(input);
-        // }else{
-        //   localStorage.setItem(e, JSON.stringify({checkStatus:true}))
-        //   input.setAttribute("defaultChecked", !CheckBoxStatus.checkStatus)
-        //   console.log(input);
-        // }
     }
 
     if (localStorage.length === 3) {
-        console.log("lol");
+        console.log();
       }else{
         localStorage.setItem(list.phaseName , JSON.stringify(list));
     }
@@ -55,6 +51,23 @@ export const ListTemple = ({data}) => {
         const obj = JSON.parse(localStorage.getItem(list.phaseName))
         setPhaseObj(obj)
     },[list.phaseName])
+
+    useEffect(()=>{
+        if (phaseObj.tasks) {
+            const array = phaseObj.tasks.map((item)=>{
+                return item.isChecked
+            })
+            if(phaseObj.phaseName === "Phase №1"){
+                dispatch(loadPhase1Stats(array))
+
+            }else if(phaseObj.phaseName === "Phase №2"){
+                dispatch(loadPhase2Stats(array))
+
+            }else if(phaseObj.phaseName === "Phase №3"){
+                dispatch(loadPhase3Stats(array))
+            }
+        }
+    })
 
     return (
         <div>
