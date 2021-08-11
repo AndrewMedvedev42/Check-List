@@ -19,7 +19,7 @@ export const ListTemple = ({data}) => {
                     for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = true;
-                            CheckBoxStatus.statusOfAll[i] = true
+                            // CheckBoxStatus.statusOfAll[i] = true
                             break;
                         }
                     }
@@ -30,7 +30,7 @@ export const ListTemple = ({data}) => {
                     for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = false;
-                            CheckBoxStatus.statusOfAll[i] = false
+                            // CheckBoxStatus.statusOfAll[i] = false
                             break;
                         }
                     }
@@ -54,17 +54,17 @@ export const ListTemple = ({data}) => {
 
     useEffect(()=>{
         if (phaseObj.tasks) {
-            const array = phaseObj.tasks.map((item)=>{
+            const statuses = phaseObj.tasks.map((item)=>{
                 return item.isChecked
             })
             if(phaseObj.phaseName === "Phase №1"){
-                dispatch(loadPhase1Stats(array))
+                dispatch(loadPhase1Stats(statuses))
 
             }else if(phaseObj.phaseName === "Phase №2"){
-                dispatch(loadPhase2Stats(array))
+                dispatch(loadPhase2Stats(statuses))
 
             }else if(phaseObj.phaseName === "Phase №3"){
-                dispatch(loadPhase3Stats(array))
+                dispatch(loadPhase3Stats(statuses))
             }
         }
     })
