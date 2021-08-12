@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux"
 import {loadPhase1Stats,loadPhase2Stats,loadPhase3Stats} from "../redux/actions/phaseActions"
 
-export const ListTemple = ({data}) => {
+export const ListTemple = ({data, isDone}) => {
     const [list] = data
     const [phaseObj, setPhaseObj] = useState({})
     const dispatch = useDispatch()
@@ -28,7 +28,7 @@ export const ListTemple = ({data}) => {
         CheckBoxStatus.tasks.find((item)=>{
             if(item.id === e){
                 if(item.isChecked === false){
-                    for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
+                    for (let i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = true;
                             break;
@@ -39,7 +39,7 @@ export const ListTemple = ({data}) => {
                     input.setAttribute("defaultChecked", true)
 
                 }else{
-                    for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
+                    for (let i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = false;
                             break;
@@ -84,6 +84,7 @@ export const ListTemple = ({data}) => {
     return (
         <div>
             <h1>{phaseObj.phaseName}</h1>
+            {isDone ? (<h1>Done</h1>):""}
             <section>
                 {phaseObj.tasks && (
                     phaseObj.tasks.map((item)=>{
