@@ -9,32 +9,44 @@ export const ListTemple = ({data}) => {
     const [phaseObj, setPhaseObj] = useState({})
     const dispatch = useDispatch()
 
+    const gainStatuses = (e) => {
+        const statuses = e.tasks.map((item)=>{
+            return item.isChecked
+        })
+        if(e.phaseName === "Phase №1"){
+            dispatch(loadPhase1Stats(statuses));
+        }else if(e.phaseName === "Phase №2"){
+            dispatch(loadPhase2Stats(statuses));
+        }else if(e.phaseName === "Phase №3"){
+            dispatch(loadPhase3Stats(statuses));
+        }
+    }
+
     const handleChange = (e) => {
         let CheckBoxStatus = JSON.parse(localStorage.getItem(phaseObj.phaseName))
         const input = document.getElementById(`${e}`)
-        console.log(e);
         CheckBoxStatus.tasks.find((item)=>{
             if(item.id === e){
                 if(item.isChecked === false){
                     for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = true;
-                            // CheckBoxStatus.statusOfAll[i] = true
                             break;
                         }
                     }
                     localStorage.setItem(phaseObj.phaseName, JSON.stringify(CheckBoxStatus))
+                    gainStatuses(CheckBoxStatus)
                     input.setAttribute("defaultChecked", true)
 
                 }else{
                     for (var i = 0; i < CheckBoxStatus.tasks.length; i++) {
                         if(e === CheckBoxStatus.tasks[i].id){
                             CheckBoxStatus.tasks[i].isChecked = false;
-                            // CheckBoxStatus.statusOfAll[i] = false
                             break;
                         }
                     }
                     localStorage.setItem(phaseObj.phaseName, JSON.stringify(CheckBoxStatus))
+                    gainStatuses(CheckBoxStatus)
                     input.setAttribute("defaultChecked", false)
                 }
             }
@@ -67,7 +79,7 @@ export const ListTemple = ({data}) => {
                 dispatch(loadPhase3Stats(statuses))
             }
         }
-    })
+    },[phaseObj])
 
     return (
         <div>

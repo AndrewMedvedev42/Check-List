@@ -3,7 +3,7 @@ import PhaseReducer from "./Phase-Reducer"
 
 
 const rootReducers = combineReducers({
-    PhaseReducer: PhaseReducer,
+    Phases: PhaseReducer,
 })
 
 export default rootReducers
