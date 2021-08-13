@@ -1,6 +1,6 @@
 body{
     .MainTitle{
-        font-size: 3rem;
+        font-size: 2rem;
         text-align: center;
         color: white;
     }
@@ -17,6 +17,10 @@ body{
             .PhaseTitleSection{
                 display: flex;
                 align-items: center;
+                .PhaseTitle{
+                    font-size: 2.5rem;
+                    color: rgb(56, 56, 56);
+                }
                 .DoneMessage{
                     margin-left:0.5rem;
                     color: rgb(0, 201, 0);
@@ -28,6 +32,7 @@ body{
                     display: flex;
                     align-items: center;
                     span{
+                        font-size: 1.5rem;
                         margin-left: 1rem;
                         color: rgb(153, 153, 153);
                     }
@@ -37,7 +42,7 @@ body{
                         background-color: #ffffff;
                         border: 5px solid #730099;
                         box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-                        padding: 9px;
+                        padding: 10px;
                         border-radius: 3px;
                         display: inline-block;
                         position: relative;
@@ -55,10 +60,10 @@ body{
     
                     input:checked:after {
                         content: '\2714';
-                        font-size: 14px;
+                        font-size: 24px;
                         position: absolute;
-                        top: 0px;
-                        left: 3px;
+                        top: -3px;
+                        left: 0px;
                         color: #ffffff;
                     }
                 }
@@ -75,6 +80,7 @@ body{
     .RandomFactMessage{
         margin: 0.5rem;
         font-size: 2rem;
+        text-align: center;
         color: white;
     }
 }
