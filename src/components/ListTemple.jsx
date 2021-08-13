@@ -1,5 +1,7 @@
 //REACT
 import {useEffect, useState} from "react";
+import { AiFillCheckCircle } from "react-icons/ai";
+import FadeIn from 'react-fade-in';
 //REDUX
 import {useDispatch} from "react-redux"
 import {loadPhase1Stats,loadPhase2Stats,loadPhase3Stats} from "../redux/actions/phaseActions"
@@ -82,20 +84,24 @@ export const ListTemple = ({data, isDone}) => {
     },[phaseObj])
 
     return (
-        <div>
-            <h1>{phaseObj.phaseName}</h1>
-            {isDone ? (<h1>Done</h1>):""}
-            <section>
+        <FadeIn>
+        <div className="PhaseSection">
+            <div className="PhaseTitleSection">
+                <h1 className="PhaseTitle">{phaseObj.phaseName}</h1>
+                {isDone ? (<FadeIn><AiFillCheckCircle className="DoneMessage" size={30}/></FadeIn>):""}
+            </div>
+            <section className="TasksList">
                 {phaseObj.tasks && (
                     phaseObj.tasks.map((item)=>{
                         const {id, taskName, isChecked} = item
                         return (
-                            <div key={id}>
+                            <div key={id} className="Task">
                                 <input id={id} defaultChecked={isChecked} type="checkbox" onChange={()=>{handleChange(id)}}/><span>{taskName}</span>
                             </div>)
                     })
                 )}
             </section>
         </div>
+        </FadeIn>
     )
 }

@@ -1,7 +1,7 @@
 const initState = {
-    phase1:[],
-    phase2:[],
-    phase3:[],
+    phase1:false,
+    phase2:false,
+    phase3:false,
 }
 
 const PhaseReducer = (state=initState, action) => {

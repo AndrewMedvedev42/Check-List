@@ -1,0 +1,47 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    .PhaseSection{
+        .PhaseTitleSection{
+            display: flex;
+            align-items: center;
+            .DoneMessage{
+                margin-left: 0.5rem;
+                color: rgb(0, 201, 0);
+            }
+        }
+        .TasksList{
+            .Task{
+                input {
+                    transition: 0.5s;
+                    -webkit-appearance: none;
+                    background-color: #ffffff;
+                    border: 5px solid #730099;
+                    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+                    padding: 9px;
+                    border-radius: 3px;
+                    display: inline-block;
+                    position: relative;
+                }
+
+                input:active, .regular-checkbox:checked:active {
+                    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+                }
+                
+                input:checked {
+                    background-color: #730099;
+                    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+                    color: #ffffff;
+                }
+
+                input:checked:after {
+                    content: '\2714';
+                    font-size: 14px;
+                    position: absolute;
+                    top: 0px;
+                    left: 3px;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}

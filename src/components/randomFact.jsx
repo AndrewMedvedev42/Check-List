@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 export const RandomFact = ()=>{
     const [randomFact, setRandomFact] = useState({})
 
-    const reqLink = `https://uselessfacts.jsph.pl/random.json`
+    const reqLink = `https://uselessfacts.jsph.pl/random.json?language=en`
 
     useEffect(()=>{
         fetch(reqLink)
