@@ -13,11 +13,11 @@ function App(){
 
   return (
     <div className="App">
-      <h1>My startup progress</h1>
-      <section>
-        <ListTemple data={PhaseOneList} isDone={Phase1Status}/>
-        {Phase1Status ? (<ListTemple data={PhaseTwoList} isDone={Phase2Status}/>):""}
-        {Phase1Status && Phase2Status ? (<ListTemple data={PhaseThreeList} isDone={Phase3Status}/>):""}
+      <h1 className="MainTitle">Things I need to learn</h1>
+      <section className="mainSection">
+        <ListTemple data={PhaseOneList} phaseName="Phase№1" isDone={Phase1Status}/>
+        {Phase1Status ? (<ListTemple phaseName="Phase№2" data={PhaseTwoList} isDone={Phase2Status}/>):""}
+        {Phase1Status && Phase2Status ? (<ListTemple phaseName="Phase№3" data={PhaseThreeList} isDone={Phase3Status}/>):""}
         {Phase1Status && Phase2Status && Phase3Status ? (<RandomFact/>):""}
       </section>
     </div>

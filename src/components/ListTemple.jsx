@@ -6,8 +6,7 @@ import FadeIn from 'react-fade-in';
 import {useDispatch} from "react-redux"
 import {loadPhase1Stats,loadPhase2Stats,loadPhase3Stats} from "../redux/actions/phaseActions"
 
-export const ListTemple = ({data, isDone}) => {
-    const [list] = data
+export const ListTemple = ({phaseName, data, isDone}) => {
     const [phaseObj, setPhaseObj] = useState({})
     const dispatch = useDispatch()
 
@@ -15,17 +14,17 @@ export const ListTemple = ({data, isDone}) => {
         const statuses = e.tasks.map((item)=>{
             return item.isChecked
         })
-        if(e.phaseName === "Phase №1"){
+        if(e.phaseCodeName === "Phase№1"){
             dispatch(loadPhase1Stats(statuses));
-        }else if(e.phaseName === "Phase №2"){
+        }else if(e.phaseCodeName === "Phase№2"){
             dispatch(loadPhase2Stats(statuses));
-        }else if(e.phaseName === "Phase №3"){
+        }else if(e.phaseCodeName === "Phase№3"){
             dispatch(loadPhase3Stats(statuses));
         }
     }
 
     const handleChange = (e) => {
-        let CheckBoxStatus = JSON.parse(localStorage.getItem(phaseObj.phaseName))
+        let CheckBoxStatus = JSON.parse(localStorage.getItem(phaseObj.phaseCodeName))
         const input = document.getElementById(`${e}`)
         CheckBoxStatus.tasks.find((item)=>{
             if(item.id === e){
@@ -36,7 +35,7 @@ export const ListTemple = ({data, isDone}) => {
                             break;
                         }
                     }
-                    localStorage.setItem(phaseObj.phaseName, JSON.stringify(CheckBoxStatus))
+                    localStorage.setItem(phaseObj.phaseCodeName, JSON.stringify(CheckBoxStatus))
                     gainStatuses(CheckBoxStatus)
                     input.setAttribute("defaultChecked", true)
 
@@ -47,7 +46,7 @@ export const ListTemple = ({data, isDone}) => {
                             break;
                         }
                     }
-                    localStorage.setItem(phaseObj.phaseName, JSON.stringify(CheckBoxStatus))
+                    localStorage.setItem(phaseObj.phaseCodeName, JSON.stringify(CheckBoxStatus))
                     gainStatuses(CheckBoxStatus)
                     input.setAttribute("defaultChecked", false)
                 }
@@ -55,29 +54,35 @@ export const ListTemple = ({data, isDone}) => {
         })
     }
 
-    if (localStorage.length === 3) {
-        console.log();
-      }else{
-        localStorage.setItem(list.phaseName , JSON.stringify(list));
-    }
+        if (localStorage.length === 0 && data.phaseCodeName === "Phase№1") {
+            console.log(data.phaseCodeName);
+            localStorage.setItem(data.phaseCodeName , JSON.stringify(data));
+          }else if(localStorage.length === 1 && data.phaseCodeName === "Phase№2"){
+            console.log(data.phaseCodeName);
+            localStorage.setItem(data.phaseCodeName , JSON.stringify(data));
+        }else if(localStorage.length === 2 && data.phaseCodeName === "Phase№3"){
+            console.log(data.phaseCodeName);
+            localStorage.setItem(data.phaseCodeName , JSON.stringify(data));
+        }
+
 
     useEffect(()=>{
-        const obj = JSON.parse(localStorage.getItem(list.phaseName))
+        const obj = JSON.parse(localStorage.getItem(data.phaseCodeName))
         setPhaseObj(obj)
-    },[list.phaseName])
+    },[data.phaseCodeName])
 
     useEffect(()=>{
         if (phaseObj.tasks) {
             const statuses = phaseObj.tasks.map((item)=>{
                 return item.isChecked
             })
-            if(phaseObj.phaseName === "Phase №1"){
+            if(phaseObj.phaseCodeName === "Phase№1"){
                 dispatch(loadPhase1Stats(statuses))
 
-            }else if(phaseObj.phaseName === "Phase №2"){
+            }else if(phaseObj.phaseCodeName === "Phase№2"){
                 dispatch(loadPhase2Stats(statuses))
 
-            }else if(phaseObj.phaseName === "Phase №3"){
+            }else if(phaseObj.phaseCodeName === "Phase№3"){
                 dispatch(loadPhase3Stats(statuses))
             }
         }
@@ -87,8 +92,8 @@ export const ListTemple = ({data, isDone}) => {
         <FadeIn>
         <div className="PhaseSection">
             <div className="PhaseTitleSection">
-                <h1 className="PhaseTitle">{phaseObj.phaseName}</h1>
-                {isDone ? (<FadeIn><AiFillCheckCircle className="DoneMessage" size={30}/></FadeIn>):""}
+                <h1 className="PhaseTitle">{phaseObj.phaseTitle}</h1>
+                {isDone ? (<FadeIn><AiFillCheckCircle className="DoneMessage" size={40}/></FadeIn>):""}
             </div>
             <section className="TasksList">
                 {phaseObj.tasks && (

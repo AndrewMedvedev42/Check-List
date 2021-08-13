@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import FadeIn from 'react-fade-in';
 
 export const RandomFact = ()=>{
     const [randomFact, setRandomFact] = useState({})
@@ -10,9 +11,10 @@ export const RandomFact = ()=>{
             .then((res)=>{return res.json()})
                 .then((data)=>{setRandomFact(data)})
     },[reqLink])
-    return (<section>
-        {randomFact.text && (
-            <h1>{randomFact.text}</h1>
-        )}
-    </section>)
+    return (<FadeIn>
+        <section className="RandomFactSection">
+            {randomFact.text && (
+                <h1 className="RandomFactMessage">Random Fact: {randomFact.text}</h1>
+            )}
+        </section></FadeIn>)
 }
