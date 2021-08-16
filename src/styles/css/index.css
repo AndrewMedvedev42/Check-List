@@ -2,7 +2,7 @@ body {
   background-color: #730099;
   font-family: Arial, Helvetica, sans-serif; }
   body .MainTitle {
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
     color: white; }
   body .mainSection {
@@ -16,7 +16,7 @@ body {
         display: flex;
         align-items: center; }
         body .mainSection .PhaseSection .PhaseTitleSection .PhaseTitle {
-          font-size: 2.5rem;
+          font-size: 3.5rem;
           color: #383838; }
         body .mainSection .PhaseSection .PhaseTitleSection .DoneMessage {
           margin-left: 0.5rem;

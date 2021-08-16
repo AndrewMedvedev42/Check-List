@@ -1,16 +1,18 @@
+//REACT
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//import of css styles
 import "./styles/css/index.css"
 //REDUX
   import rootReducers from "./redux/reducers/allReducer"
   import {Provider} from "react-redux"
   import {createStore, applyMiddleware, compose} from "redux"
   import thunk from "redux-thunk" 
-
+//Reduc Devtools Extention
   const composeEnchancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
+//Redux store
   const store = createStore(rootReducers , composeEnchancer(applyMiddleware(thunk)))
 
 ReactDOM.render(

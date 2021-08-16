@@ -4,6 +4,8 @@ const initState = {
     phase3:false,
 }
 
+//Reducers will store the overall status (that "concludeStatus" provided in phaseActions.js) of the phase for corresponding phases
+
 const PhaseReducer = (state=initState, action) => {
     switch (action.type){
         case "LOAD_PHASE1_STATS":
