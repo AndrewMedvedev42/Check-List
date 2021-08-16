@@ -25,6 +25,12 @@ body{
                     font-size: 56px;
                     color: rgb(56, 56, 56);
                 }
+
+    @media (max-width: 600px) {
+        .PhaseTitle{
+            font-size: 28px;
+        }
+     } 
                 .DoneMessage{
                     margin-left:0.5rem;
                     color: rgb(0, 201, 0);
@@ -42,6 +48,13 @@ body{
                         margin-left: 1rem;
                         color: #808388;
                     }
+
+                    @media (max-width: 600px) {
+                        span{
+                            font-size: 16px;
+                        }
+                     } 
+
                     input {
                         transition: 0.5s;
                         -webkit-appearance: none;
@@ -75,8 +88,9 @@ body{
                 }
             }
         }
-    }
+    } 
 }
+
 
 .RandomFactSection{
     background-color: rgb(207, 169, 0);
@@ -84,10 +98,9 @@ body{
     padding: 1rem;
     border-radius: 25px;
     .RandomFactMessage{
-        font-family: 'Roboto', sans-serif;
-        letter-spacing: 1px;
+        font-family: 'Rubik', sans-serif;
         margin: 0rem;
-        font-size: 36px;
+        font-size: 24px;
         text-align: center;
         color: white;
     }

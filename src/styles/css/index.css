@@ -21,6 +21,9 @@ body {
           font-family: 'Rubik', sans-serif;
           font-size: 56px;
           color: #383838; }
+        @media (max-width: 600px) {
+          body .mainSection .PhaseSection .PhaseTitleSection .PhaseTitle {
+            font-size: 28px; } }
         body .mainSection .PhaseSection .PhaseTitleSection .DoneMessage {
           margin-left: 0.5rem;
           color: #00c900; }
@@ -35,6 +38,9 @@ body {
             font-size: 20px;
             margin-left: 1rem;
             color: #808388; }
+          @media (max-width: 600px) {
+            body .mainSection .PhaseSection .TasksList .Task span {
+              font-size: 16px; } }
           body .mainSection .PhaseSection .TasksList .Task input {
             transition: 0.5s;
             -webkit-appearance: none;
@@ -65,9 +71,8 @@ body {
   padding: 1rem;
   border-radius: 25px; }
   .RandomFactSection .RandomFactMessage {
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 1px;
+    font-family: 'Rubik', sans-serif;
     margin: 0rem;
-    font-size: 36px;
+    font-size: 24px;
     text-align: center;
     color: white; }
