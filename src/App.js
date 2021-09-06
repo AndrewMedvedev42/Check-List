@@ -1,6 +1,6 @@
 //REACT
 import {React} from "react"
-import {PhaseOneList, PhaseTwoList, PhaseThreeList} from "./CheckListObject"
+import {phaseOneList, phaseTwoList, phaseThreeList} from "./CheckListObject"
 import {ListTemplate} from "./components/ListTemplate"
 import {RandomFact} from "./components/randomFact"
 //REDUX
@@ -9,9 +9,9 @@ import {useSelector} from "react-redux"
 function App(){
 
   // imports overall status of the each phase from redux store
-  const Phase1Status = useSelector(state => state.Phases.phase1)
-  const Phase2Status = useSelector(state => state.Phases.phase2)
-  const Phase3Status = useSelector(state => state.Phases.phase3)
+  const phase1Status = useSelector(state => state.Phases.phase1)
+  const phase2Status = useSelector(state => state.Phases.phase2)
+  const phase3Status = useSelector(state => state.Phases.phase3)
 
 
   //In section "mainSection" Phase1 with being shown first by default
@@ -23,10 +23,10 @@ function App(){
     <div className="App">
       <h1 className="MainTitle">Things I need to learn</h1>
       <section className="mainSection">
-        <ListTemplate data={PhaseOneList} phaseName="Phase№1" isDone={Phase1Status}/>
-        {Phase1Status ? (<ListTemplate phaseName="Phase№2" data={PhaseTwoList} isDone={Phase2Status}/>):""}
-        {Phase1Status && Phase2Status ? (<ListTemplate phaseName="Phase№3" data={PhaseThreeList} isDone={Phase3Status}/>):""}
-        {Phase1Status && Phase2Status && Phase3Status ? (<RandomFact/>):""}
+        <ListTemplate data={phaseOneList} phaseName="Phase№1" isDone={phase1Status}/>
+        {phase1Status ? (<ListTemplate phaseName="Phase№2" data={phaseTwoList} isDone={phase2Status}/>):""}
+        {phase1Status && phase2Status ? (<ListTemplate phaseName="Phase№3" data={phaseThreeList} isDone={phase3Status}/>):""}
+        {phase1Status && phase2Status && phase3Status ? (<RandomFact/>):""}
       </section>
     </div>
   );

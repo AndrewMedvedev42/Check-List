@@ -1,6 +1,6 @@
 //Default objects with data for each phase (for now only 3 phases)
 
-export const PhaseOneList = 
+export const phaseOneList = 
     {phaseTitle:"How to cook a rice",
         phaseCodeName:"Phase№1", 
         tasks:[
@@ -10,7 +10,7 @@ export const PhaseOneList =
             {index:3, id:"Ph-1,T-4", taskName:"Drain the rice", isChecked:false}],
 }
 
-export const PhaseTwoList = 
+export const phaseTwoList = 
     {phaseTitle:"How to turn the dark theme for Google", 
         phaseCodeName:"Phase№2", 
         tasks:[
@@ -19,7 +19,7 @@ export const PhaseTwoList =
             {index:2, id:"Ph-2,T-3", taskName:"Under Display, turn on Dark theme ", isChecked:false},],
 }
 
-export const PhaseThreeList = 
+export const phaseThreeList = 
     {phaseTitle:"How to kill a dragon", 
         phaseCodeName:"Phase№3", 
         tasks:[

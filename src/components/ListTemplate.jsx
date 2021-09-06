@@ -34,7 +34,7 @@ export const ListTemplate = ({phaseName, data, isDone}) => {
 //Function which responsible for change of the status of the checkbox (in the UI and in the localStorage)
     const handleChange = (e) => {
         //Gets current phase object from localStorage
-        let CheckBoxStatus = JSON.parse(localStorage.getItem(phaseObj.phaseCodeName))
+        const CheckBoxStatus = JSON.parse(localStorage.getItem(phaseObj.phaseCodeName))
         // const input = document.getElementById(`${e}`)
 
         //Filters through phase object to find corresponding checkbox by id (e) that was given by "onChange={()=>{handleChange(id)}}"
